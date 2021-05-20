@@ -9,6 +9,7 @@ public:
     int age;
     Person* parent;
     int* numeroParaDestructor;
+
 public:
     Person() : name("generic"), age(50), parent(0), numeroParaDestructor(new int) {}            //default contructor
     //Person() = default;     
@@ -33,6 +34,7 @@ Person::Person(const Person& original)   //Deep Copy
     name = "generico";
     //age = origin.getAge();
     parent = new Person("otherName", 40, 0);   // Deep Copy
+    numeroParaDestructor=new int;
 }
 
 int main()
@@ -44,6 +46,7 @@ int main()
     cout << dave.name;
     cout << john.parent << endl;
     cout << dave.parent << endl;
+    
     cout << dave.parent->name;
     cout << dave.name;
     delete joseph;

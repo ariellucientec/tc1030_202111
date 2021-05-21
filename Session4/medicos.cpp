@@ -2,22 +2,9 @@
 
 #include<string>
 #include<iostream>
+#include"Person.h"
+
 using namespace std;
-
-class Person
-{
-protected:
-    string name;
-public:
-    Person(){}
-    Person(string name) : name(name){}
-    string getName();
-};
-
-string Person::getName()
-{
-    return name;
-}
 
 class Employee : public Person
 {
@@ -67,30 +54,40 @@ void Doctor::consult(Patient patient)
     // -> flecha se utiliza cuando SÍ hay un apuntador
 }
 
-
 bool Doctor::isBusy()
 {
     return busy;
 }
 
-
-
-
 class MedicalAssistant : public Employee
 {
+    Doctor* doctor;
 public:
     MedicalAssistant(){}
-    MedicalAssistant(int id, string name, string position, double salary) : Employee(id, position, salary, name){} 
-protected:
-
+    MedicalAssistant(Doctor* doctor, int id, string name, string position, double salary) : doctor(doctor), Employee(id, position, salary, name){} 
+public:
+    void setAnAppointment(Patient patient);
 };
 
-
+void MedicalAssistant::setAnAppointment(Patient patient)
+{
+    if(doctor->isBusy() == true)
+    cout << "el doctor está ocupado atendiendo a " << doctor->getPatient().getName() << " llama después" << endl;
+    else
+    {
+        doctor->consult(patient);
+        cout<< "el doctor " << doctor->getName() << " te va a dar consulta. Adelante!!" << endl;
+    }
+}
 
 int main()
 {
-    Doctor who;
-    Doctor* other = &who;
-    who.getName();
-    other->getName();
+    Doctor who(3838, 1, "Walter", "médico", 100000);
+    MedicalAssistant a1(&who, 2, "mike", "asistente", 10000);
+    MedicalAssistant a2(&who, 3, "mary", "asistente", 10000);
+    Patient pedrito(1, "pedrito");
+
+    a1.setAnAppointment(pedrito);
+    a2.setAnAppointment(pedrito);
+
 }

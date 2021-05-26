@@ -5,22 +5,26 @@
     de otra clase. La manera de hacerlo es haciendo clases amigas
     
 */
-class classA
+#include<iostream>
+using namespace std;
+
+class ClassA
 {
 private:
     int privateVal;
 protected:
     int protectedVal;
-
-
 public:
-    friend class classB;
+    void printValues(){cout << "privateVal = " << privateVal << " and protectedVal = " << protectedVal << endl;}
+    friend class ClassB;
 };
 
-class classB
+class ClassB
 {
-    classA* c;
+    ClassA* c;
 public:   
+    ClassB(){}
+    ClassB(ClassA* c) : c(c){}
     void setPrivateVal()
     {
         c->privateVal = 10;
@@ -30,7 +34,9 @@ public:
 
 int main()
 {
-    classB b;
+    ClassA a;
+    ClassB b(&a);
     b.setPrivateVal(); 
+    a.printValues();
 }
 

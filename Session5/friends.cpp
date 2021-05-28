@@ -3,6 +3,8 @@
 
     Se necesita una forma en la que una clase tenga acceso a los atributos y métodos PRIVADOS o PROTEGIDOS
     de otra clase. La manera de hacerlo es haciendo clases amigas
+
+    a) Una clase amiga es aquella que puede acceder a mis métodos/atributos privados o protegidos
     
 */
 #include<iostream>
@@ -18,7 +20,6 @@ public:
     void printValues(){cout << "privateVal = " << privateVal << " and protectedVal = " << protectedVal << endl;}
     friend class ClassB;
 };
-
 class ClassB
 {
     ClassA* c;
@@ -31,7 +32,6 @@ public:
         c->protectedVal = 20;
     }
 };
-
 int main()
 {
     ClassA a;

@@ -30,13 +30,15 @@ int main()
 {
     Tank tank;
     WaterGunWrapper waterGun;
-    MissileGunWrapper misilGun;
+    MissileGunWrapper missileGun;
     FireGunWrapper fireGun;
     tank.setGun(&waterGun);
     tank.fire();
-    tank.setGun(&misilGun);
+    tank.setGun(&missileGun);
     tank.fire();
     tank.setGun(&fireGun);
+    tank.fire();
+    tank.setGun(&n);
     tank.fire();
 }
 

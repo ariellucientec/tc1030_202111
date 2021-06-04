@@ -1,4 +1,4 @@
-#include"../ListaGenérica/Element.h"
+#include"Element.h"
 #include<string>
 #include<iostream>
 using namespace std;
@@ -8,10 +8,11 @@ class Teacher : public Element
 {
 protected:
     string nomina;
+    Teacher(){}
 public:
     Teacher(string nombre, string nomina) : Element(nombre), nomina(nomina){}
     string getNomina();
-    void print()
+    void print() // overriding
     {
         cout << "soy " << getS() << " y mi nómina es " << getNomina() << endl;
     }

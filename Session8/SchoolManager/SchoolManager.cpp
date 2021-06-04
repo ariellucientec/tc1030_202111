@@ -1,4 +1,4 @@
-#include"../ListaGenérica/LinkedList.h"
+#include"LinkedList.h"
 #include"Teacher.h"
 #include"Student.h"
 
@@ -33,19 +33,15 @@ public:
             }
         }
     }
+
     int getNumberOfEmployees()
     {
         return listEmployees->size();
     }
+    
     ~SchoolManager()
     {
-        for (int i = listEmployees->size(); i >= 0 ; i--)
-        {
-            cout << i;
-            delete listEmployees->get(i);      
-        }
         delete listEmployees;
-        
     }
 };
 

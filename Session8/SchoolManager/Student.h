@@ -1,4 +1,4 @@
-#include"../ListaGenérica/Element.h"
+#include"Element.h"
 #include<string>
 #include<iostream>
 using namespace std;
@@ -8,6 +8,7 @@ class Student : public Element
 {
 protected:
     string matricula;
+    Student(){}
 public:
     Student(string nombre, string matricula) : Element(nombre), matricula(matricula){}
     string getMatricula();
